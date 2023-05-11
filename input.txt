@@ -1,0 +1,6 @@
+Functional Requirement
+ 1. Rent product
+ 2. Update supplies
+ 3. Modify renting information
+ 4. Rating 
+ 5. Enter number (Enter 0 to exit)
