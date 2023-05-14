@@ -1,3 +1,9 @@
-1: White Chair,40 Rs
-2: Red Chair,40 Rs
-3: Wooden Chair,40 Rs
+White Chair
+40
+50
+Red Chair
+40
+35
+Wooden Chair
+40
+37

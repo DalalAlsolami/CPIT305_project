@@ -9,6 +9,8 @@ class Supplies {
     String name;
     int price;
     boolean inStock; 
+    String Arraycontent;
+    int quantity;
 
 
     
@@ -21,12 +23,21 @@ class Supplies {
       
     }
 
-    Supplies(String name, int Price, int quantity, int days) {
+    Supplies(String name, int P, int quantity) {
         this.name = name;
-        this.price = price;
-        this.numberOfItems = quantity;
-        this.numberOfDays = days;
+        this.price = P;
+        this.quantity = quantity;
+        
     }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    
 
     public int getNumberOfDays() {
         return numberOfDays;
@@ -97,6 +108,10 @@ class Supplies {
                  System.out.println("Thank you  :) ");
    
      
+    }
+   @Override
+     public String toString(){
+        return "item Name: "+name + " price: "+ price + " Available Quantity of the item: " + quantity;
     }
 
 }

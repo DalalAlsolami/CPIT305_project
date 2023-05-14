@@ -1,2 +1,6 @@
-1: Big Speaker,150 Rs
-2: Small Speaker,80 Rs
+Big Speaker
+150
+10
+Small Speaker
+80
+34
