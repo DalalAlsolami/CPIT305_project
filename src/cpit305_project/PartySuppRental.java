@@ -7,10 +7,51 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
 
-public class PartySuppRental {
-
+public class PartySuppRental extends JFrame implements ActionListener {
+    
+   
+    static JButton button ,button1;
+    static JLabel label;
+    static JButton button3 ,button4;
+    static JLabel label2,label3;
+    static JTextField input,input2;
+    public PartySuppRental(){
+       
+       JFrame frame = new JFrame();
+       frame.setTitle("register"); 
+       frame.setSize(400, 300);
+       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       frame.setVisible(true);
+       frame.setResizable(false);
+       frame.setLayout(null);
+       
+      
+       button = new JButton("Manager");
+       button1 = new JButton("customer");
+       label = new JLabel("register as a manager or a customer:");
+       
+       frame.add(button);
+       frame.add(button1);
+       frame.add(label);
+        
+        button.setBounds(100, 100, 150, 40);
+        button1.setBounds(100, 150, 150, 40);
+        label.setBounds(70, 50, 250, 40);
+        
+         button.addActionListener(this);
+         button1.addActionListener(this);
+         
+         
+    }
+    
     public static void main(String[] args) throws FileNotFoundException, IOException {
+        new  PartySuppRental();
+         
         ArrayList<Supplies> table = new ArrayList<>();
         ArrayList<Supplies> speaker = new ArrayList<>();
         ArrayList<Supplies> chair = new ArrayList<>();
@@ -306,5 +347,46 @@ public class PartySuppRental {
         }
 
         System.exit(0);
+    }
+    
+    private static void register() {
+        //PartySuppRental pr = new PartySuppRental();
+        JFrame frame2 = new JFrame();
+       frame2.setTitle("manager register"); 
+       frame2.setSize(400, 300);
+       frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       frame2.setVisible(true);
+       frame2.setResizable(false);
+       frame2.setLayout(null);
+       
+       button3 = new JButton("login");
+       button4 = new JButton("exit");
+       label2 = new JLabel("enter user name:");
+       label3 = new JLabel("enter password:");
+       input = new JTextField(10);
+       input2 = new JTextField(10);
+       frame2.add(button3);
+       frame2.add(button4);
+       frame2.add(label2);
+       frame2.add(label3);
+       frame2.add(input);
+       frame2.add(input2);
+        
+        button3.setBounds(50, 150, 100, 40);
+        button4.setBounds(200, 150, 100, 40);
+        label2.setBounds(50, 30, 250, 40);
+        label3.setBounds(50, 70, 250, 40);
+        input.setBounds(150, 45, 150, 20);
+        input2.setBounds(150, 85, 150, 20);
+         //button2.addActionListener(pr);
+         //button12.addActionListener(pr);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == button ){
+            register();
+        }
+        
     }
 }
