@@ -1,20 +1,23 @@
 
 package cpit305_project;
 
-class Supplies {
-    
-   int itemID;
-   int numberOfItems;
-   int numberOfDays;
+class Supplies {    
+    int itemID;
+    int numberOfItems;
+    int numberOfDays;
     String name;
     int price;
     boolean inStock; 
-    String Arraycontent;
     int quantity;
 
-
     
+    Supplies( String shomokh_, int numTable, int chTable, int dayTable) {
+     this.numberOfItems=numTable;
+     this.name = shomokh_;
     
+     this.itemID = chTable;
+     this.numberOfDays= dayTable;
+    }
     
     Supplies( int chTable, int numTable, int dayTable) { 
        this.itemID= chTable;
@@ -28,6 +31,14 @@ class Supplies {
         this.price = P;
         this.quantity = quantity;
         
+    }
+
+    Supplies() {
+      
+    }
+
+    Supplies(String shrooge_, int i) {
+       
     }
 
     public int getQuantity() {
@@ -56,6 +67,7 @@ class Supplies {
         this.numberOfItems = numberOfItems;
     }
 
+  
     public String getName() {
         return name;
     }
@@ -77,9 +89,9 @@ class Supplies {
     void Tablereservation(){
          double Totalp=0;
                 if( itemID == 1){
-                   Totalp =numberOfItems* 200 *numberOfDays ; 
+                   Totalp =numberOfItems* price *numberOfDays ; 
                 }else if(itemID == 2){
-                  Totalp = numberOfItems* 150 *numberOfDays;
+                  Totalp = numberOfItems* price *numberOfDays;
                 }else{
                     System.out.println("Invalid choice .. Try again! ");
                 }
@@ -98,9 +110,9 @@ class Supplies {
     void speakerRes() {
          double Totalp=0;
                 if( itemID == 1){
-                   Totalp = numberOfItems* 150 *numberOfDays ;    
+                   Totalp = numberOfItems* price *numberOfDays ;    
                 }else if(itemID == 2){
-                   Totalp = numberOfItems* 80 *numberOfDays ;   
+                   Totalp = numberOfItems* price*numberOfDays ;   
                 }else{
                     System.out.println("Invalid choice .. Try again! ");
                 }
@@ -112,6 +124,28 @@ class Supplies {
    @Override
      public String toString(){
         return "item Name: "+name + " price: "+ price + " Available Quantity of the item: " + quantity;
+    }
+     
+     
+
+ 
+   public synchronized void bookItem(String name ,int numberOfItem, int numOfdays, int itemID) {  
+       double Totalp=0;
+       if( quantity >=  numberOfItem  ) {
+            if( itemID == 1){
+                   Totalp =numberOfItem*price *numOfdays ; 
+                   System.out.println(Thread.currentThread().getName()+" Customer "+name +": "+ numberOfItem+" items booked successfully with " + Totalp + "$");
+                    quantity = quantity - numberOfItem;  
+               
+                }else if(itemID == 2){
+                  Totalp = numberOfItem*price*numOfdays;  
+                  System.out.println(" Customer "+name +": "+ numberOfItem +" items booked successfully with " + Totalp +  "$");
+                   quantity=quantity - numberOfItem;  
+                }
+           
+        }else{
+            System.out.println(Thread.currentThread().getName()+" Customer "+name+"Sorry the qountity of your order not avaliable ");       
+        }
     }
 
 }
