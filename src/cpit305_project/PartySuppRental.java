@@ -50,7 +50,7 @@ public class PartySuppRental extends JFrame implements ActionListener {
     }
     
     public static void main(String[] args) throws FileNotFoundException, IOException {
-     //   new  PartySuppRental();
+        new  PartySuppRental();
          
         ArrayList<Supplies> table = new ArrayList<>();
         ArrayList<Supplies> speaker = new ArrayList<>();
