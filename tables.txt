@@ -1,6 +1,6 @@
-Round table 
-6200
+Round table 6
+200
 34
-Round table
-4150
+Round table 4
+150
 20

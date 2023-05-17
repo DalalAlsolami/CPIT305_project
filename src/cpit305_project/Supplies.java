@@ -85,42 +85,42 @@ class Supplies {
     }
 
   
-    
-    void Tablereservation(){
-         double Totalp=0;
-                if( itemID == 1){
-                   Totalp =numberOfItems* price *numberOfDays ; 
-                }else if(itemID == 2){
-                  Totalp = numberOfItems* price *numberOfDays;
-                }else{
-                    System.out.println("Invalid choice .. Try again! ");
-                }
-                 System.out.println("Total price for "+ numberOfItems +" tables "+ Totalp +"$");
-                 System.out.println("Thank you  :) ");
-    }
+//    
+//    void Tablereservation(){
+//         double Totalp=0;
+//                if( itemID == 1){
+//                   Totalp =numberOfItems* price *numberOfDays ; 
+//                }else if(itemID == 2){
+//                  Totalp = numberOfItems* price *numberOfDays;
+//                }else{
+//                    System.out.println("Invalid choice .. Try again! ");
+//                }
+//                 System.out.println("Total price for "+ numberOfItems +" tables "+ Totalp +"$");
+//                 System.out.println("Thank you  :) ");
+//    }
 
 
 
-    void chairReservation() {
-         double Totalp = numberOfItems* 40 *numberOfDays ; 
-                  System.out.println("Total price for "+ numberOfItems +" chairs "+ Totalp +"$");
-                  System.out.println("Thank you  :) ");
-    }
-
-    void speakerRes() {
-         double Totalp=0;
-                if( itemID == 1){
-                   Totalp = numberOfItems* price *numberOfDays ;    
-                }else if(itemID == 2){
-                   Totalp = numberOfItems* price*numberOfDays ;   
-                }else{
-                    System.out.println("Invalid choice .. Try again! ");
-                }
-                 System.out.println("Total price for "+ numberOfItems +" tables "+ Totalp +"$");
-                 System.out.println("Thank you  :) ");
-   
-     
-    }
+//    void chairReservation() {
+//         double Totalp = numberOfItems* 40 *numberOfDays ; 
+//                  System.out.println("Total price for "+ numberOfItems +" chairs "+ Totalp +"$");
+//                  System.out.println("Thank you  :) ");
+//    }
+//
+//    void speakerRes() {
+//         double Totalp=0;
+//                if( itemID == 1){
+//                   Totalp = numberOfItems* price *numberOfDays ;    
+//                }else if(itemID == 2){
+//                   Totalp = numberOfItems* price*numberOfDays ;   
+//                }else{
+//                    System.out.println("Invalid choice .. Try again! ");
+//                }
+//                 System.out.println("Total price for "+ numberOfItems +" tables "+ Totalp +"$");
+//                 System.out.println("Thank you  :) ");
+//   
+//     
+//    }
    @Override
      public String toString(){
         return "item Name: "+name + " price: "+ price + " Available Quantity of the item: " + quantity;
@@ -132,16 +132,10 @@ class Supplies {
    public synchronized void bookItem(String name ,int numberOfItem, int numOfdays, int itemID) {  
        double Totalp=0;
        if( quantity >=  numberOfItem  ) {
-            if( itemID == 1){
+           
                    Totalp =numberOfItem*price *numOfdays ; 
                    System.out.println(Thread.currentThread().getName()+" Customer "+name +": "+ numberOfItem+" items booked successfully with " + Totalp + "$");
-                    quantity = quantity - numberOfItem;  
-               
-                }else if(itemID == 2){
-                  Totalp = numberOfItem*price*numOfdays;  
-                  System.out.println(" Customer "+name +": "+ numberOfItem +" items booked successfully with " + Totalp +  "$");
-                   quantity=quantity - numberOfItem;  
-                }
+                    quantity = quantity - numberOfItem;      
            
         }else{
             System.out.println(Thread.currentThread().getName()+" Customer "+name+"Sorry the qountity of your order not avaliable ");       

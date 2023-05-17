@@ -24,6 +24,6 @@ public class bookingThread extends Thread{
        this.numberOfTables=numTable;
     }
      public void run(){
-       s.bookItem(username,numberOfTables,itemID, numOfdays) ;
+       s.bookItem(username,numberOfTables, numOfdays,itemID) ;
      }     
 }

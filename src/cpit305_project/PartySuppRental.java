@@ -50,53 +50,54 @@ public class PartySuppRental extends JFrame implements ActionListener {
     }
     
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        new  PartySuppRental();
+      //  new  PartySuppRental();
          
         ArrayList<Supplies> table = new ArrayList<>();
         ArrayList<Supplies> speaker = new ArrayList<>();
         ArrayList<Supplies> chair = new ArrayList<>();
-      //  DataInputStream tables = new DataInputStream(new FileInputStream("tables.txt"));
+        DataInputStream tables = new DataInputStream(new FileInputStream("tables.txt"));
         DataInputStream din2 = new DataInputStream(new FileInputStream("input.txt"));
-       // DataInputStream chairs = new DataInputStream(new FileInputStream("chair.txt"));
-      //  DataInputStream speakers = new DataInputStream(new FileInputStream("speaker.txt"));
+        DataInputStream chairs = new DataInputStream(new FileInputStream("chair.txt"));
+        DataInputStream speakers = new DataInputStream(new FileInputStream("speaker.txt"));
         Scanner r = new Scanner(System.in);
-
+        String name = null,price = null,quantity = null;
         System.out.println("------------------------------");
         while (din2.available() > 0) {
             System.out.println(din2.readLine());
         }
         System.out.println("------------------------------");
-       // try {
-//            while (tables.available() > 0) {
-//                String name = tables.readLine();
-//                String price = tables.readLine();
-//                String quantity = tables.readLine();
-//                //table.add(new Supplies(name, Integer.parseInt(price), Integer.parseInt(quantity)));
-//            }
+        try {
+            while (tables.available() > 0) {
+               name = tables.readLine();
+                price = tables.readLine();
+                quantity = tables.readLine();
+                table.add(new Supplies(name, Integer.parseInt(price), Integer.parseInt(quantity)));
+            }
 
-//            while (chairs.available() > 0) {
-//                String name = chairs.readLine();
-//                String price = chairs.readLine();
-//                String quantity = chairs.readLine();
-//                chair.add(new Supplies(name, Integer.parseInt(price), Integer.parseInt(quantity)));
-//            }
-//            while (speakers.available() > 0) {
-//                String name = speakers.readLine();
-//                String price = speakers.readLine();
-//                String quantity = speakers.readLine();
-//                speaker.add(new Supplies(name, Integer.parseInt(price), Integer.parseInt(quantity)));
-//            }
+            while (chairs.available() > 0) {
+               name = chairs.readLine();
+               price = chairs.readLine();
+               quantity = chairs.readLine();
+                chair.add(new Supplies(name, Integer.parseInt(price), Integer.parseInt(quantity)));
+            }
+            while (speakers.available() > 0) {
+                name = speakers.readLine();
+                price = speakers.readLine();
+                quantity = speakers.readLine();
+                speaker.add(new Supplies(name, Integer.parseInt(price), Integer.parseInt(quantity)));
+            }
             
-//        } catch (EOFException e) {
-//            System.out.println("End of file reached");
-//        }
+        } catch (EOFException e) {
+           System.out.println("End of file reached");
+        }
 
         System.out.print("Select from the menu: ");
         int ch = r.nextInt();
 
         while (true) {
-            if (ch == 1) {
-                rentProudct(table, chair, speaker);
+            
+            if (ch == 1) {  
+                rentProudct(table, chair, speaker,name,Integer.parseInt(price), Integer.parseInt(quantity));             
                 break;
             } else if (ch == 2) {
                 updateSupplies(table, chair, speaker);
@@ -114,108 +115,104 @@ public class PartySuppRental extends JFrame implements ActionListener {
 
     }
 
-    private static void rentProudct(ArrayList<Supplies> table, ArrayList chair, ArrayList speaker) throws FileNotFoundException, IOException {
+    private static void rentProudct(ArrayList<Supplies> table, ArrayList <Supplies> chair, ArrayList <Supplies> speaker, String name,int price ,int quantity ) throws FileNotFoundException, IOException {
             System.out.println("--------Rent product--------");
             Scanner r = new Scanner(System.in);
             System.out.println(" 1.Tables  \n 2.Chairs  \n 3.Speakers \n---------------------------- ");
             System.out.print("select from menu: ");
             int answer = r.nextInt();
-             String name = null, price = null,quantity = null;
+            int i=0;
             switch (answer) {
-                case 1: {
-                      DataInputStream tables = new DataInputStream(new FileInputStream("tables.txt"));
-                     while (tables.available() > 0) {
-                      name = tables.readLine();
-                      price = tables.readLine();
-                      quantity = tables.readLine();
-                      table.add(new Supplies(name, Integer.parseInt(price), Integer.parseInt(quantity)));
-                     }
-                                     
+                case 1: {                                  
                     System.out.println("-------Available tables-----");
-                    for (int i = 0; i < table.size(); i++) {
-                        System.out.println(i + 1 + "." + table.get(i).toString());
-                    }
+                    for (int ii = 0; i < table.size(); i++) {
+                        System.out.println(ii + 1 + "." + table.get(i).toString());
+                    } 
                     System.out.println("----------------------------");
+                 
+                    while(true){
                     System.out.print("choose table Id: ");
                     int chTable = r.nextInt();
+                        if(chTable == 1 || chTable == 2 ){
+                            System.out.print("How many table do you want? ");
+                            int numTable = r.nextInt();
 
-                    System.out.print("How many table do you want? ");
-                    int numTable = r.nextInt();
-
-                    System.out.print("How many days do you need it? ");
-                    int dayTable = r.nextInt();
-                    
-                     Supplies s = new Supplies(name, Integer.parseInt(price), Integer.parseInt(quantity));
-                     bookingThread t1 = new bookingThread(s,"shomokh ",numTable,chTable,dayTable);
-                     bookingThread t2 = new  bookingThread(s,"shrooge ",10,1,1);
-                     t1.start();
-                     t2.start();
-
+                            System.out.print("How many days do you need it? ");
+                            int dayTable = r.nextInt();
+                           
+                             Supplies s = new Supplies(name, table.get(chTable-1).getPrice() ,table.get(chTable-1).getQuantity());
+                             bookingThread t1 = new bookingThread(s,"shomokh ",numTable,chTable,dayTable);
+                             bookingThread t2 = new  bookingThread(s,"shrooge ",10,1,1);
+                             t1.start();
+                             t2.start();
+                             break;
+                               
+                           }else{
+                            System.out.println("Invalid ID choose again ");  
+                        }
+                        
+                    }
                     break;
-
                 }
-                case 2: {
-                     DataInputStream chairs = new DataInputStream(new FileInputStream("chair.txt"));
-                     while (chairs.available() > 0) {
-                        name = chairs.readLine();
-                        price = chairs.readLine();
-                        quantity = chairs.readLine();
-                     chair.add(new Supplies(name, Integer.parseInt(price), Integer.parseInt(quantity)));
-            }
+                case 2: { 
                     System.out.println("-------Available chairs-----");
-                    for (int i = 0; i < chair.size(); i++) {
-                        System.out.println(i + 1 +"." + chair.get(i).toString());
+                    for (int ii = 0; i < chair.size(); i++) {
+                        System.out.println(ii + 1 +"." + chair.get(i).toString());
                     }
                     System.out.println("----------------------------");
-                    
-                    System.out.print("choose chair Id: ");
-                    int chTable = r.nextInt();
-       
-                    System.out.print("How many chair do you want? ");
-                    int numTable = r.nextInt();
-                    
-                    System.out.print("How many days do you need it? ");
-                    int dayTable = r.nextInt();
-                    
-                     Supplies s = new Supplies(name, Integer.parseInt(price), Integer.parseInt(quantity));
-                     bookingThread t1 = new bookingThread(s,"shomokh ",numTable,chTable,dayTable);
-                     bookingThread t2 = new  bookingThread(s,"shrooge ",30,1,1);
-                     t1.start();
-                     t2.start();
-                    break;
+                       while(true){
+                        System.out.print("choose chair Id: ");
+                        int chTable = r.nextInt();
+                           if(chTable == 1 || chTable ==2 || chTable==3 ){     
+                           
+                             System.out.print("How many chair do you want? ");
+                             int numTable = r.nextInt();
+                             System.out.print("How many days do you need it? ");
+                             int dayTable = r.nextInt();
 
-                }
+                             Supplies s = new Supplies(name,chair.get(chTable-1).getPrice(), chair.get(chTable-1).getQuantity());
+                             bookingThread t1 = new bookingThread(s,"shomokh ",numTable,chTable,dayTable);
+                             bookingThread t2 = new  bookingThread(s,"shrooge ",30,1,1);
+                             t1.start();
+                             t2.start();
+                            break; 
+                           }else{
+                            System.out.println("Invalid ID choose again ");  
+                           }
+                        }
+                        break;
+                    }
                 case 3: {
-                     DataInputStream speakers = new DataInputStream(new FileInputStream("speaker.txt"));
-                      while (speakers.available() > 0) {
-                      name = speakers.readLine();
-                      price = speakers.readLine();
-                      quantity = speakers.readLine();
-                speaker.add(new Supplies(name, Integer.parseInt(price), Integer.parseInt(quantity)));
-            }
+                    
                     System.out.println("-------Available speakers-----");
-                    for (int i = 0; i < speaker.size(); i++) {
-                        System.out.println(i+ 1 +"." +speaker.get(i).toString());
+                    for (int ii = 0; i < speaker.size(); i++) {
+                        System.out.println(ii+ 1 +"." +speaker.get(i).toString());
                     }
                     System.out.println("----------------------------");
-
-                    System.out.print("choose speaker Id: ");
-                    int chTable = r.nextInt();
-
-                    System.out.print("How many chair do you want? ");
-                    int numTable = r.nextInt();
-                    System.out.print("How many days do you need it? ");
-                    int dayTable = r.nextInt();
-                     Supplies s = new Supplies(name, Integer.parseInt(price), Integer.parseInt(quantity));
-                     bookingThread t1 = new bookingThread(s,"shomokh ",numTable,chTable,dayTable);
-                     bookingThread t2 = new  bookingThread(s,"shrooge ",30,1,1);
-                     t1.start();
-                     t2.start();
-                    break;
+                    
+                    while(true){
+                        System.out.print("choose speaker Id: ");
+                        int chTable = r.nextInt();  
+                        if(chTable== 1 || chTable == 2 ){
+                            System.out.print("How many chair do you want? ");
+                            int numTable = r.nextInt();
+                            System.out.print("How many days do you need it? ");
+                            int dayTable = r.nextInt();
+                            Supplies s = new Supplies(name,speaker.get(chTable-1).getPrice(), speaker.get(chTable-1).getQuantity());
+                            bookingThread t1 = new bookingThread(s,"shomokh ",numTable,chTable,dayTable);
+                            bookingThread t2 = new  bookingThread(s,"shrooge ",6,1,1);
+                            t1.start();
+                            t2.start();
+                            break;
+                        }else{
+                        System.out.println("Invalid ID choose again ");
+                    }
                 }
+                break;
             }
+        }
         
-    }
+   }
 
     private static void updateSupplies(ArrayList<Supplies> table, ArrayList<Supplies> chair, ArrayList<Supplies> speaker) {
         while (true) {
