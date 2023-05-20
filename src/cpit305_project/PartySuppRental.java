@@ -5,27 +5,27 @@ import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 public class PartySuppRental {
     
+    static ArrayList<Supplies> table = new ArrayList<>();
+    static ArrayList<Supplies> speaker = new ArrayList<>();
+    static ArrayList<Supplies> chair = new ArrayList<>();
+    static String name,price,quantity;
+    static Socket incoming;
+    
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        ArrayList<Supplies> table = new ArrayList<>();
-        ArrayList<Supplies> speaker = new ArrayList<>();
-        ArrayList<Supplies> chair = new ArrayList<>();
-        DataInputStream tables = new DataInputStream(new FileInputStream("tables.txt"));
-        DataInputStream din2 = new DataInputStream(new FileInputStream("input.txt"));
-        DataInputStream chairs = new DataInputStream(new FileInputStream("chair.txt"));
-        DataInputStream speakers = new DataInputStream(new FileInputStream("speaker.txt"));
-        Scanner r = new Scanner(System.in);
-        String name = null,price = null,quantity = null;
-        System.out.println("------------------------------");
-        while (din2.available() > 0) {
-            System.out.println(din2.readLine());
-        }
-        System.out.println("------------------------------");
-        try {
+        
+        try(DataInputStream tables = new DataInputStream(new FileInputStream("tables.txt"));
+            //DataInputStream din2 = new DataInputStream(new FileInputStream("input.txt"));
+            DataInputStream chairs = new DataInputStream(new FileInputStream("chair.txt"));
+            DataInputStream speakers = new DataInputStream(new FileInputStream("speaker.txt"));)
+        {
             while (tables.available() > 0) {
                name = tables.readLine();
                 price = tables.readLine();
@@ -45,65 +45,56 @@ public class PartySuppRental {
                 quantity = speakers.readLine();
                 speaker.add(new Supplies(name, Integer.parseInt(price), Integer.parseInt(quantity)));
             }
-            
-        } catch (EOFException e) {
-           System.out.println("End of file reached");
         }
-
-        System.out.print("Select from the menu: ");
-        int ch = r.nextInt();
-
+        catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+        
+        ServerSocket s = new ServerSocket(8800);
+        System.out.println("Server waiting Connection...");
+        
         while (true) {
-            
-            if (ch == 1) {  
-                rentProudct(table, chair, speaker,name,Integer.parseInt(price), Integer.parseInt(quantity));             
-                break;
-            } else if (ch == 2) {
-                updateSupplies(table, chair, speaker);
-                break;
-            } else if (ch == 3) {
-                break;
-            } else if (ch == 4) {
-                serviceRating();
-                break;
-            } else {
-                System.out.println("Invalid choice .. Try again ");
-                break;
-            }
-        }
+              incoming = s.accept();
+              System.out.println("Client connect via: " + incoming.getLocalAddress());
+              Runnable run = new bookingThread(incoming);
+              Thread t = new Thread(run);
+              t.start();
+          }
+
+        
 
     }
 
-    private static void rentProudct(ArrayList<Supplies> table, ArrayList <Supplies> chair, ArrayList <Supplies> speaker, String name,int price ,int quantity ) throws FileNotFoundException, IOException {
-            System.out.println("--------Rent product--------");
-            Scanner r = new Scanner(System.in);
-            System.out.println(" 1.Tables  \n 2.Chairs  \n 3.Speakers \n---------------------------- ");
-            System.out.print("select from menu: ");
-            int answer = r.nextInt();
+    public static void rentProudct(ArrayList<Supplies> table, ArrayList <Supplies> chair, ArrayList <Supplies> speaker,Scanner in,PrintWriter out) throws FileNotFoundException, IOException {
+            out.println("--------Rent product--------");
+            Scanner r = in;
+            out.println(" 1.Tables  \n 2.Chairs  \n 3.Speakers \n---------------------------- ");
+            out.print("select from menu: ");
+            int answer = in.nextInt();
             int i=0;
             switch (answer) {
                 case 1: {                                  
-                    System.out.println("-------Available tables-----");
-                    for (int ii = 0; i < table.size(); i++) {
-                        System.out.println(ii + 1 + "." + table.get(i).toString());
-                    } 
-                    System.out.println("----------------------------");
+                    out.println("-------Available tables-----");
+                    for (int j = 0; j < table.size(); j++) {
+                        out.println(j + 1 + "." + table.get(j).toString()); //problem
+                    }
+                   out.println("----------------------------");
                  
                     while(true){
-                    System.out.print("choose table Id: ");
+                    out.print("choose table Id: ");
                     int chTable = r.nextInt();
                         if(chTable == 1 || chTable == 2 ){
-                            System.out.print("How many table do you want? ");
+                            out.print("How many table do you want? ");
                             int numTable = r.nextInt();
 
-                            System.out.print("How many days do you need it? ");
+                            out.print("How many days do you need it? ");
                             int dayTable = r.nextInt();
-                           
-                             Supplies s = new Supplies(name, table.get(chTable-1).getPrice() ,table.get(chTable-1).getQuantity());
-                             bookingThread t1 = new bookingThread(s,"shomokh ",numTable,chTable,dayTable);
-                             bookingThread t2 = new  bookingThread(s,"shrooge ",10,1,1);
-                             t1.start();
-                             t2.start();
+                            
+                             //Supplies s = new Supplies(name, table.get(chTable-1).getPrice() ,table.get(chTable-1).getQuantity());
+                             //bookingThread t1 = new bookingThread(s,"shomokh ",numTable,chTable,dayTable);
+                             //bookingThread t2 = new  bookingThread(s,"shrooge ",10,1,1);
+                             //t1.start();
+                             //t2.start();
                              break;
                                
                            }else{
@@ -173,7 +164,7 @@ public class PartySuppRental {
         
    }
 
-    private static void updateSupplies(ArrayList<Supplies> table, ArrayList<Supplies> chair, ArrayList<Supplies> speaker) {
+    public static void updateSupplies() {
         while (true) {
             System.out.println("--------Update Supplies--------");
             Scanner r = new Scanner(System.in);
@@ -322,7 +313,7 @@ public class PartySuppRental {
         }
     }
 
-    private static void serviceRating() {
+    public static void serviceRating() {
         System.out.println("Thank you for visiting our store.\nPlease rate your experience on a scale from 1(unhappy) to 10(happy): ");
 
         Scanner scanner = new Scanner(System.in);
