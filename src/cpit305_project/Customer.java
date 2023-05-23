@@ -8,6 +8,7 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 class Customer {
     String username;
     String password;
@@ -57,30 +58,39 @@ class Customer {
         
         System.out.println("Server says: " + in.nextLine());
         String str;
-        int i = 1;
-        String ch= null;
+        int ch;
         while (true){
             str = in.nextLine();
             System.out.println(str);
             if(str.equals("Select from the menu: ")){
-                System.out.println("done");
-                ch = userInput.nextLine();
-                 System.out.print(ch);
-                out.print(ch);
-                break;
+                ch = userInput.nextInt();
+                out.println(ch);
+            }
+            else if(str.equals("choose product Id: ")){
+                ch = userInput.nextInt();
+                out.println(ch);
+            }
+            else if(str.equals("How many do you want? ") || str.equals("How many days do you need it? ")){
+                ch = userInput.nextInt();
+                out.println(ch);
             }
         }
         
-        System.out.print("what ");
-        
-        
-        while (true) {
+       
+        /*while (true) {
             if (ch.equals("1")) {
-                System.out.print("what ");
                 while (in.hasNextLine()){
                     str = in.nextLine();
                     System.out.println(str);
+                    if(str.equals("Select from the menu: ")){
+                        ch = userInput.nextLine();
+                        System.out.println("hi");
+                        out.println(ch);
+                        break;
+                    }
                 }
+                System.out.println("hi2");
+                
             } else if (ch.equals(1)) {
                 PartySuppRental.updateSupplies();
                 break;
@@ -93,7 +103,8 @@ class Customer {
                 System.out.println("Invalid choice .. Try again ");
                 break;
             }
-        }
+        }*/
+        
         }
          // (5) close the socket c.close();
          

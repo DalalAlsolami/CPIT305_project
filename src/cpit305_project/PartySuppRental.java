@@ -21,35 +21,6 @@ public class PartySuppRental {
     
     public static void main(String[] args) throws FileNotFoundException, IOException {
         
-        try(DataInputStream tables = new DataInputStream(new FileInputStream("tables.txt"));
-            //DataInputStream din2 = new DataInputStream(new FileInputStream("input.txt"));
-            DataInputStream chairs = new DataInputStream(new FileInputStream("chair.txt"));
-            DataInputStream speakers = new DataInputStream(new FileInputStream("speaker.txt"));)
-        {
-            while (tables.available() > 0) {
-               name = tables.readLine();
-                price = tables.readLine();
-                quantity = tables.readLine();
-                table.add(new Supplies(name, Integer.parseInt(price), Integer.parseInt(quantity)));
-            }
-
-            while (chairs.available() > 0) {
-               name = chairs.readLine();
-               price = chairs.readLine();
-               quantity = chairs.readLine();
-                chair.add(new Supplies(name, Integer.parseInt(price), Integer.parseInt(quantity)));
-            }
-            while (speakers.available() > 0) {
-                name = speakers.readLine();
-                price = speakers.readLine();
-                quantity = speakers.readLine();
-                speaker.add(new Supplies(name, Integer.parseInt(price), Integer.parseInt(quantity)));
-            }
-        }
-        catch (IOException e) {
-            System.err.println(e.getMessage());
-        }
-        
         ServerSocket s = new ServerSocket(8800);
         System.out.println("Server waiting Connection...");
         

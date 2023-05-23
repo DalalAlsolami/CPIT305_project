@@ -84,17 +84,14 @@ public class bookingThread extends Thread {
         out.println("------------------------------");
         out.println("Select from the menu: ");
         
-        System.out.println("hi");
-        rentProudct(in,out);
-        /*while(in.hasNext()) {
-            String ch = in.nextLine();
-            System.out.println("Client says: " + ch);
-            out.println("Select from the menu: ");
-            if (ch.equals("1")){
-                System.out.println("hi2");
+        int ch;
+        while(in.hasNext()) {
+            ch = in.nextInt();
+            if (ch==1){
                 rentProudct(in,out);
             }
-        }*/
+        }
+        
         }
           
         catch (IOException e) {
@@ -107,30 +104,36 @@ public class bookingThread extends Thread {
        //s.bookItem(username,numberOfTables, numOfdays,itemID);
      }
     public static void rentProudct(Scanner in,PrintWriter out) throws FileNotFoundException, IOException {
-            System.out.println("--------Rent product--------");
+            out.println("--------Rent product--------");
             Scanner r = new Scanner(System.in);
             out.println(" 1.Tables  \n 2.Chairs  \n 3.Speakers \n---------------------------- ");
-            out.print("select from menu: ");
-            int answer = in.nextInt();
-            int i=0;
-            switch (answer) {
+            out.println("Select from the menu: ");
+            int ch = in.nextInt();
+            
+            switch (ch) {
                 case 1: {                                  
                     out.println("-------Available tables-----");
-                    for (int j = 0; j < table.size(); j++) {
-                        out.println(j + 1 + "." + table.get(j).toString()); //problem
+                    for (int i = 0; i < table.size(); i++) {
+                        out.println(i + 1 + "." + table.get(i).toString());
                     }
                     out.println("----------------------------");
                  
                     while(true){
-                    out.print("choose table Id: ");
+                    out.println("choose product Id: ");
                     int chTable = in.nextInt();
                         if(chTable == 1 || chTable == 2 ){
-                            out.print("How many table do you want? ");
+                            out.println("How many do you want? ");
                             int numTable = in.nextInt();
-
-                            out.print("How many days do you need it? ");
+                            if(table.get(chTable).getQuantity() < numTable){
+                                out.println("Sorry the qountity of your order not avaliable");
+                                break;
+                            }
+                            out.println("How many days do you need it? ");
                             int dayTable = in.nextInt();
-                           
+                            
+                            double Totalp =numTable*table.get(chTable).getPrice()*dayTable ; 
+                            out.println(Thread.currentThread().getName()+" "+ numTable+" items booked successfully with " + Totalp + "$");
+                            table.get(chTable).setQuantity(numTable); 
                              //Supplies s = new Supplies(name, table.get(chTable-1).getPrice() ,table.get(chTable-1).getQuantity());
                              //bookingThread t1 = new bookingThread(s,"shomokh ",numTable,chTable,dayTable);
                              //bookingThread t2 = new  bookingThread(s,"shrooge ",10,1,1);
@@ -139,7 +142,7 @@ public class bookingThread extends Thread {
                              break;
                                
                            }else{
-                            System.out.println("Invalid ID choose again ");  
+                            out.println("Invalid ID choose again ");  
                         }
                         
                     }
@@ -147,16 +150,16 @@ public class bookingThread extends Thread {
                 }
                 case 2: { 
                     System.out.println("-------Available chairs-----");
-                    for (int ii = 0; i < chair.size(); i++) {
-                        System.out.println(ii + 1 +"." + chair.get(i).toString());
+                    for (int i = 0; i < chair.size(); i++) {
+                        System.out.println(i + 1 +"." + chair.get(i).toString());
                     }
                     System.out.println("----------------------------");
                        while(true){
-                        System.out.print("choose chair Id: ");
+                        System.out.print("choose product Id: ");
                         int chTable = r.nextInt();
                            if(chTable == 1 || chTable ==2 || chTable==3 ){     
                            
-                             System.out.print("How many chair do you want? ");
+                             System.out.print("How many do you want? ");
                              int numTable = r.nextInt();
                              System.out.print("How many days do you need it? ");
                              int dayTable = r.nextInt();
@@ -176,16 +179,16 @@ public class bookingThread extends Thread {
                 case 3: {
                     
                     System.out.println("-------Available speakers-----");
-                    for (int ii = 0; i < speaker.size(); i++) {
-                        System.out.println(ii+ 1 +"." +speaker.get(i).toString());
+                    for (int i = 0; i < speaker.size(); i++) {
+                        System.out.println(i+ 1 +"." +speaker.get(i).toString());
                     }
                     System.out.println("----------------------------");
                     
                     while(true){
-                        System.out.print("choose speaker Id: ");
+                        System.out.print("choose product Id: ");
                         int chTable = r.nextInt();  
                         if(chTable== 1 || chTable == 2 ){
-                            System.out.print("How many chair do you want? ");
+                            System.out.print("How many do you want? ");
                             int numTable = r.nextInt();
                             System.out.print("How many days do you need it? ");
                             int dayTable = r.nextInt();
