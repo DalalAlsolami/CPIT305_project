@@ -42,72 +42,36 @@ class Customer {
         this.password = password;
     }
     public static void main(String[] args) throws UnknownHostException, IOException  {
-        // TODO code application logic here
-            // (1) Create Socket obj   
         Socket c = new Socket("127.0.0.1",8800);
+        
         try {
-         
-         // (2) Create input stream obj (Scanner)
-        Scanner in = new Scanner(c.getInputStream());
-        
-        // (3) Create output stream obj (PrintWriter)
-         PrintWriter out = new PrintWriter(c.getOutputStream(),true);
+            Scanner in = new Scanner(c.getInputStream());
+            PrintWriter out = new PrintWriter(c.getOutputStream(), true);
+            Scanner userInput = new Scanner(System.in);
 
-        Scanner userInput = new Scanner(System.in);
-        
-        
-        System.out.println("Server says: " + in.nextLine());
-        String str;
-        int ch;
-        while (true){
-            str = in.nextLine();
-            System.out.println(str);
-            if(str.equals("Select from the menu: ")){
-                ch = userInput.nextInt();
-                out.println(ch);
-            }
-            else if(str.equals("choose product Id: ")){
-                ch = userInput.nextInt();
-                out.println(ch);
-            }
-            else if(str.equals("How many do you want? ") || str.equals("How many days do you need it? ")){
-                ch = userInput.nextInt();
-                out.println(ch);
-            }
-        }
-        
-       
-        /*while (true) {
-            if (ch.equals("1")) {
-                while (in.hasNextLine()){
-                    str = in.nextLine();
-                    System.out.println(str);
-                    if(str.equals("Select from the menu: ")){
-                        ch = userInput.nextLine();
-                        System.out.println("hi");
-                        out.println(ch);
-                        break;
-                    }
+            System.out.println("Server says: " + in.nextLine());
+            String str;
+            int ch;
+            String user;
+            while (in.hasNext()) {
+                str = in.nextLine();
+                System.out.println(str);
+                if (str.equals("Select from the menu: ")) {
+                    ch = userInput.nextInt();
+                    out.println(ch);
+                } else if (str.equals("choose product Id: ")) {
+                    ch = userInput.nextInt();
+                    out.println(ch);
+                } else if (str.equals("How many do you want? ") || str.equals("How many days do you need it? ")) {
+                    ch = userInput.nextInt();
+                    out.println(ch);
+                }else if (str.contains("Enter")) {
+                    user = userInput.next();
+                    out.println(user);
                 }
-                System.out.println("hi2");
-                
-            } else if (ch.equals(1)) {
-                PartySuppRental.updateSupplies();
-                break;
-            } else if (ch.equals(1)) {
-                break;
-            } else if (ch.equals(1)) {
-                PartySuppRental.serviceRating();
-                break;
-            } else {
-                System.out.println("Invalid choice .. Try again ");
-                break;
             }
-        }*/
         
-        }
-         // (5) close the socket c.close();
-         
+        } 
         catch (UnknownHostException e) {
             System.err.println("Host not found");
         } catch (java.net.ConnectException e) {

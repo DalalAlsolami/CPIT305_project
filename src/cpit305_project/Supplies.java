@@ -45,8 +45,8 @@ class Supplies {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setQuantity(int num) {
+        this.quantity = quantity - num;
     }
     
 
