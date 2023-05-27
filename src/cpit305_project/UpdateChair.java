@@ -17,19 +17,80 @@ public class UpdateChair extends javax.swing.JFrame {
        initComponents();
        id = i;
        chair = chair1;
+       set(i, chair1);
     }
+    public void set(int id,ArrayList<Supplies> chair){
+        if(id == 1){
+            try{
+                NameText.setText(chair.get(id-1).getName());
+            PriceText.setText(Integer.toString(chair.get(id-1).getPrice()));
+            QText.setText(Integer.toString(chair.get(id-1).getQuantity()));
+            
+            String newN = newName.getText();
+            chair.get(id-1).setName(newN);
+            
+            int newP = Integer.parseInt(newPrice.getText());
+            chair.get(id-1).setPrice(newP);
+            
+            int newQ = Integer.parseInt(newQuantity.getText());
+            chair.get(id-1).setQuantity(newQ);
+            }catch( NumberFormatException e){
+                e.printStackTrace();
+            }
+            
+        }
+        if(id == 2){
+            try{
+                NameText.setText(chair.get(id-1).getName());
+            PriceText.setText(Integer.toString(chair.get(id-1).getPrice()));
+            QText.setText(Integer.toString(chair.get(id-1).getQuantity()));
+            
+            String newN = newName.getText();
+            chair.get(id-1).setName(newN);
+            
+            int newP = Integer.parseInt(newPrice.getText());
+            chair.get(id-1).setPrice(newP);
+            
+            int newQ = Integer.parseInt(newQuantity.getText());
+            chair.get(id-1).setQuantity(newQ);
+            }catch( NumberFormatException e){
+                e.printStackTrace();
+            }
+            
+        }
+        if(id == 3){
+            try{
+                NameText.setText(chair.get(id-1).getName());
+            PriceText.setText(Integer.toString(chair.get(id-1).getPrice()));
+            QText.setText(Integer.toString(chair.get(id-1).getQuantity()));
+            
+            String newN = newName.getText();
+            chair.get(id-1).setName(newN);
+            
+            int newP = Integer.parseInt(newPrice.getText());
+            chair.get(id-1).setPrice(newP);
+            
+            int newQ = Integer.parseInt(newQuantity.getText());
+            chair.get(id-1).setQuantity(newQ);
+            }catch( NumberFormatException e){
+                e.printStackTrace();
+            }
+            
+        }
+    }
+
    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        PriceText = new javax.swing.JTextField();
+        QText = new javax.swing.JTextField();
+        newName = new javax.swing.JTextField();
+        newPrice = new javax.swing.JTextField();
         NameText = new javax.swing.JTextField();
-        NewNameText = new javax.swing.JTextField();
-        NewPriceText = new javax.swing.JTextField();
-        QuantityText = new javax.swing.JTextField();
-        newQText = new javax.swing.JTextField();
+        PriceText = new javax.swing.JTextField();
+        newQuantity = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -42,15 +103,15 @@ public class UpdateChair extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(246, 228, 228));
 
-        PriceText.addActionListener(new java.awt.event.ActionListener() {
+        QText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PriceTextActionPerformed(evt);
+                QTextActionPerformed(evt);
             }
         });
 
-        NameText.addActionListener(new java.awt.event.ActionListener() {
+        newName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NameTextActionPerformed(evt);
+                newNameActionPerformed(evt);
             }
         });
 
@@ -88,31 +149,30 @@ public class UpdateChair extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(newQText, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(newQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(PriceText, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(QText, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel4)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel1))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(35, 35, 35)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(NewPriceText)
                             .addComponent(NameText)
-                            .addComponent(QuantityText, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
-                            .addComponent(NewNameText))))
+                            .addComponent(newName)
+                            .addComponent(PriceText, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+                            .addComponent(newPrice))))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -121,27 +181,27 @@ public class UpdateChair extends javax.swing.JFrame {
                 .addGap(76, 76, 76)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NewPriceText, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NameText, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(QuantityText, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newName, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NewNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PriceText, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(QText, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newQText, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addComponent(ConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
@@ -161,13 +221,13 @@ public class UpdateChair extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void PriceTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PriceTextActionPerformed
+    private void QTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QTextActionPerformed
 
-    }//GEN-LAST:event_PriceTextActionPerformed
+    }//GEN-LAST:event_QTextActionPerformed
 
-    private void NameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameTextActionPerformed
+    private void newNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newNameActionPerformed
 
-    }//GEN-LAST:event_NameTextActionPerformed
+    }//GEN-LAST:event_newNameActionPerformed
 
     private void ConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmButtonActionPerformed
         JOptionPane.showMessageDialog(null, "Changed has been done seccussfuly");
@@ -212,10 +272,8 @@ public class UpdateChair extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ConfirmButton;
     private javax.swing.JTextField NameText;
-    private javax.swing.JTextField NewNameText;
-    private javax.swing.JTextField NewPriceText;
     private javax.swing.JTextField PriceText;
-    private javax.swing.JTextField QuantityText;
+    private javax.swing.JTextField QText;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -223,7 +281,9 @@ public class UpdateChair extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField newQText;
+    private javax.swing.JTextField newName;
+    private javax.swing.JTextField newPrice;
+    private javax.swing.JTextField newQuantity;
     // End of variables declaration//GEN-END:variables
 }
 

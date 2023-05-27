@@ -10,7 +10,7 @@ public class Lo {
 
         String url = "jdbc:mysql://localhost:3306";
         String username = "root";
-        String pass = "1234";
+        String pass = "053183";
 
         Connection conn = DriverManager.getConnection(url, username, pass);
 

@@ -45,8 +45,8 @@ public class Rent_Speaker extends javax.swing.JFrame {
     }
     public void setImage(){
         ImageIcon icon1 = new ImageIcon("Big Speaker.jpg");
-        Image img = icon1.getImage().getScaledInstance(JlabelTable2.getWidth(), JlabelTable2.getHeight(), Image.SCALE_SMOOTH);
-        JlabelTable2.setIcon(new ImageIcon(img));
+        Image img = icon1.getImage().getScaledInstance(JlabelTable1.getWidth(), JlabelTable1.getHeight(), Image.SCALE_SMOOTH);
+        JlabelTable1.setIcon(new ImageIcon(img));
         
         ImageIcon icon2 = new ImageIcon("small speaker.jpg");
         Image img2 = icon2.getImage().getScaledInstance(JlabelTable2.getWidth(), JlabelTable2.getHeight(), Image.SCALE_SMOOTH);
@@ -97,7 +97,6 @@ public class Rent_Speaker extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(246, 228, 228), 2));
 
         JlabelTable2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
-        JlabelTable2.setText("jLabel2");
         JlabelTable2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         JlabelTable2.setPreferredSize(new java.awt.Dimension(600, 716));
 
@@ -179,7 +178,6 @@ public class Rent_Speaker extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(210, 210, 210), 2));
 
         JlabelTable1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
-        JlabelTable1.setText("jLabel2");
         JlabelTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         JlabelTable1.setPreferredSize(new java.awt.Dimension(600, 716));
 

@@ -17,6 +17,47 @@ public class UpdateSpeaker extends javax.swing.JFrame {
        initComponents();
        this.id = i;
        speaker = speaker1;
+       set(i, speaker1);
+    }
+        public void set(int id,ArrayList<Supplies> speaker){
+        if(id == 1){
+            try{
+                nameText.setText(speaker.get(id-1).getName());
+            PriceText.setText(Integer.toString(speaker.get(id-1).getPrice()));
+            QText.setText(Integer.toString(speaker.get(id-1).getQuantity()));
+            
+            String newN = newName.getText();
+            speaker.get(id-1).setName(newN);
+            
+            int newP = Integer.parseInt(newPrice.getText());
+            speaker.get(id-1).setPrice(newP);
+            
+            int newQ = Integer.parseInt(newQuantity.getText());
+            speaker.get(id-1).setQuantity(newQ);
+            }catch( NumberFormatException e){
+                e.printStackTrace();
+            }
+            
+        }
+        if(id == 2){
+            try{
+                nameText.setText(speaker.get(id-1).getName());
+            PriceText.setText(Integer.toString(speaker.get(id-1).getPrice()));
+            QText.setText(Integer.toString(speaker.get(id-1).getQuantity()));
+            
+            String newN = newName.getText();
+            speaker.get(id-1).setName(newN);
+            
+            int newP = Integer.parseInt(newPrice.getText());
+            speaker.get(id-1).setPrice(newP);
+            
+            int newQ = Integer.parseInt(newQuantity.getText());
+            speaker.get(id-1).setQuantity(newQ);
+            }catch( NumberFormatException e){
+                e.printStackTrace();
+            }
+            
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -25,12 +66,12 @@ public class UpdateSpeaker extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        PriceText2 = new javax.swing.JTextField();
-        NameText2 = new javax.swing.JTextField();
-        NewNameText2 = new javax.swing.JTextField();
-        NewPriceText2 = new javax.swing.JTextField();
-        QuantityText2 = new javax.swing.JTextField();
-        newQText2 = new javax.swing.JTextField();
+        QText = new javax.swing.JTextField();
+        newName = new javax.swing.JTextField();
+        newPrice = new javax.swing.JTextField();
+        nameText = new javax.swing.JTextField();
+        PriceText = new javax.swing.JTextField();
+        newQuantity = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -45,13 +86,13 @@ public class UpdateSpeaker extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(246, 228, 228));
 
-        PriceText2.addActionListener(new java.awt.event.ActionListener() {
+        QText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PriceTextActionPerformed(evt);
             }
         });
 
-        NameText2.addActionListener(new java.awt.event.ActionListener() {
+        newName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NameTextActionPerformed(evt);
             }
@@ -91,11 +132,11 @@ public class UpdateSpeaker extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(newQText2, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(newQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(PriceText2, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(QText, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,10 +152,10 @@ public class UpdateSpeaker extends javax.swing.JFrame {
                                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(35, 35, 35)))
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(NewPriceText2)
-                            .addComponent(NameText2)
-                            .addComponent(QuantityText2, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
-                            .addComponent(NewNameText2))))
+                            .addComponent(nameText)
+                            .addComponent(newName)
+                            .addComponent(PriceText, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+                            .addComponent(newPrice))))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -123,27 +164,27 @@ public class UpdateSpeaker extends javax.swing.JFrame {
                 .addGap(76, 76, 76)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NewPriceText2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nameText, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NameText2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newName, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(QuantityText2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PriceText, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NewNameText2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PriceText2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(QText, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newQText2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(ConfirmButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
@@ -237,11 +278,8 @@ public class UpdateSpeaker extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ConfirmButton2;
-    private javax.swing.JTextField NameText2;
-    private javax.swing.JTextField NewNameText2;
-    private javax.swing.JTextField NewPriceText2;
-    private javax.swing.JTextField PriceText2;
-    private javax.swing.JTextField QuantityText2;
+    private javax.swing.JTextField PriceText;
+    private javax.swing.JTextField QText;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -250,6 +288,9 @@ public class UpdateSpeaker extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField newQText2;
+    private javax.swing.JTextField nameText;
+    private javax.swing.JTextField newName;
+    private javax.swing.JTextField newPrice;
+    private javax.swing.JTextField newQuantity;
     // End of variables declaration//GEN-END:variables
 }

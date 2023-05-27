@@ -89,12 +89,12 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jLabel13" min="-2" pref="107" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="newQText2" min="-2" pref="365" max="-2" attributes="0"/>
+                              <Component id="newQuantity" min="-2" pref="365" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="PriceText2" min="-2" pref="373" max="-2" attributes="0"/>
+                              <Component id="QText" min="-2" pref="373" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -117,10 +117,10 @@
                                   </Group>
                               </Group>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="NewPriceText2" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="NameText2" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="QuantityText2" alignment="0" pref="374" max="32767" attributes="0"/>
-                                  <Component id="NewNameText2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="nameText" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="newName" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="PriceText" alignment="0" pref="374" max="32767" attributes="0"/>
+                                  <Component id="newPrice" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -134,32 +134,32 @@
                       <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel18" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="NewPriceText2" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="nameText" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel17" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="NameText2" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="newName" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel16" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                          <Component id="QuantityText2" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="PriceText" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel15" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                          <Component id="NewNameText2" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="newPrice" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel14" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                          <Component id="PriceText2" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="QText" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel13" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                          <Component id="newQText2" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="newQuantity" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="33" max="32767" attributes="0"/>
                       <Component id="ConfirmButton2" min="-2" pref="54" max="-2" attributes="0"/>
@@ -169,23 +169,23 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="PriceText2">
+            <Component class="javax.swing.JTextField" name="QText">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PriceTextActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="NameText2">
+            <Component class="javax.swing.JTextField" name="newName">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NameTextActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="NewNameText2">
+            <Component class="javax.swing.JTextField" name="newPrice">
             </Component>
-            <Component class="javax.swing.JTextField" name="NewPriceText2">
+            <Component class="javax.swing.JTextField" name="nameText">
             </Component>
-            <Component class="javax.swing.JTextField" name="QuantityText2">
+            <Component class="javax.swing.JTextField" name="PriceText">
             </Component>
-            <Component class="javax.swing.JTextField" name="newQText2">
+            <Component class="javax.swing.JTextField" name="newQuantity">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel13">
               <Properties>
