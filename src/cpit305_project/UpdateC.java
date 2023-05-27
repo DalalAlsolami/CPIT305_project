@@ -1,5 +1,7 @@
 package cpit305_project;
 
+import java.util.ArrayList;
+
 public class UpdateC extends javax.swing.JFrame {
 
     /**
@@ -7,6 +9,14 @@ public class UpdateC extends javax.swing.JFrame {
      */
     public UpdateC() {
         initComponents();
+    }
+    static ArrayList<Supplies> chair = new ArrayList<>();
+  
+  
+
+    public UpdateC( ArrayList<Supplies> chair1) {
+        initComponents();
+        chair = chair1;
     }
 
     @SuppressWarnings("unchecked")
@@ -111,7 +121,7 @@ public class UpdateC extends javax.swing.JFrame {
     private void OkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkButtonActionPerformed
         dispose();
         String ID = IDText.getText();
-        UpdateChair uc = new UpdateChair(Integer.parseInt(ID));
+        UpdateChair uc = new UpdateChair(Integer.parseInt(ID),chair);
         uc.show();
     }//GEN-LAST:event_OkButtonActionPerformed
 

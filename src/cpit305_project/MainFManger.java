@@ -115,13 +115,13 @@ public class MainFManger extends javax.swing.JFrame {
 
     private void UpdateCButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateCButtonActionPerformed
         dispose();
-        UpdateC nc = new UpdateC();
+        UpdateC nc = new UpdateC(chair);
         nc.show();
     }//GEN-LAST:event_UpdateCButtonActionPerformed
 
     private void UpdateSButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateSButtonActionPerformed
         dispose();
-        UpdateS ns = new UpdateS();
+        UpdateS ns = new UpdateS(speaker);
         ns.show();
     }//GEN-LAST:event_UpdateSButtonActionPerformed
 

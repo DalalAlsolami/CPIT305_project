@@ -1,8 +1,18 @@
 package cpit305_project;
 
+import java.util.ArrayList;
+
 
 public class UpdateS extends javax.swing.JFrame {
 
+    static ArrayList<Supplies> speaker = new ArrayList<>();
+  
+  
+
+    public UpdateS( ArrayList<Supplies> speaker1) {
+        initComponents();
+        speaker = speaker1;
+    }
     /**
      * Creates new form UpdateS
      */
@@ -105,7 +115,7 @@ public class UpdateS extends javax.swing.JFrame {
     private void OkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkButtonActionPerformed
          dispose();
         String ID = IDText.getText();
-        UpdateSpeaker ut = new UpdateSpeaker(Integer.parseInt(ID));
+        UpdateSpeaker ut = new UpdateSpeaker(Integer.parseInt(ID), speaker);
         ut.show();
     }//GEN-LAST:event_OkButtonActionPerformed
 

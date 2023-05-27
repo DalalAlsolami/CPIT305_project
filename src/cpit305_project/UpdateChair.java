@@ -13,9 +13,10 @@ public class UpdateChair extends javax.swing.JFrame {
         initComponents();
     }
 
-    public UpdateChair(int i){
-        this(); // to implement first constructor
-       this.id = i;
+    public UpdateChair(int i, ArrayList<Supplies> chair1){
+       initComponents();
+       id = i;
+       chair = chair1;
     }
    
     @SuppressWarnings("unchecked")

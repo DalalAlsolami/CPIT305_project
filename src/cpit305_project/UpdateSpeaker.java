@@ -1,5 +1,6 @@
 package cpit305_project;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 
@@ -8,12 +9,14 @@ public class UpdateSpeaker extends javax.swing.JFrame {
 
 
     int id;
+    static ArrayList<Supplies> speaker = new ArrayList<>();
     public UpdateSpeaker() {
         initComponents();
     }
-    public UpdateSpeaker(int i){
-        this(); // to implement first constructor
+    public UpdateSpeaker(int i, ArrayList<Supplies> speaker1){
+       initComponents();
        this.id = i;
+       speaker = speaker1;
     }
 
     @SuppressWarnings("unchecked")
