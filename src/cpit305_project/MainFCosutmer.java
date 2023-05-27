@@ -1,5 +1,7 @@
 package cpit305_project;
 
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,12 +12,21 @@ package cpit305_project;
  * @author asus
  */
 public class MainFCosutmer extends javax.swing.JFrame {
-
+static ArrayList<Supplies> table = new ArrayList<>();
+    static ArrayList<Supplies> speaker = new ArrayList<>();
+    static ArrayList<Supplies> chair = new ArrayList<>();
     /**
      * Creates new form MainFrame
      */
     public MainFCosutmer() {
         initComponents();
+    }
+    
+    public MainFCosutmer(ArrayList<Supplies> table1,ArrayList<Supplies> chair1 ,ArrayList<Supplies> speaker1) {
+        initComponents();
+        table = table1;
+        speaker = speaker1;
+        chair = chair1;
     }
 
     /**
@@ -104,7 +115,7 @@ public class MainFCosutmer extends javax.swing.JFrame {
 
     private void RentSButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RentSButtonActionPerformed
         dispose();
-        Rent_Supplies supp = new Rent_Supplies();
+        Rent_Supplies supp = new Rent_Supplies(table,chair,speaker);
         supp.show();
     }//GEN-LAST:event_RentSButtonActionPerformed
 

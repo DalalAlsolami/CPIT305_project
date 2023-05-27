@@ -15,18 +15,28 @@ import cpit305_project.MainFCosutmer;
  */
 public class OrderConfirm extends javax.swing.JFrame {
 
+    int qnty=0;
+    double Totalp=0.0;
     /**
      * Creates new form OrderConfirm
      */
     public OrderConfirm() {
         initComponents();
+        //set();
+    }
+
+    public OrderConfirm( int qnty, double Totalp) {
+        this.qnty = qnty;
+        this.Totalp = Totalp;
         set();
     }
+
+    
     
     public void set(){
         int b = (int)(Math.random()*(100000-0+1)+0);  
         jTextField1.setText("Your Has been Confermed Order Number is #" + b);
-        billArea.setText("");
+        billArea.setText(qnty + "items booked successfully with " + Totalp +"$");
         
     }
 

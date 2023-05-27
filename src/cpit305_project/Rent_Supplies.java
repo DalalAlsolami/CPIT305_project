@@ -1,5 +1,8 @@
 package cpit305_project;
 
+import java.net.Socket;
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,11 +14,22 @@ package cpit305_project;
  * @author asus
  */
 public class Rent_Supplies extends javax.swing.JFrame {
-
+    static private Socket incoming;
+    static ArrayList<Supplies> table = new ArrayList<>();
+    static ArrayList<Supplies> speaker = new ArrayList<>();
+    static ArrayList<Supplies> chair = new ArrayList<>();
+    static String name,price,quantity;
     /**
      * Creates new form Rent_Supplies
      */
     public Rent_Supplies() {
+        this.setVisible(true);
+        initComponents();
+    }
+    public Rent_Supplies(ArrayList<Supplies> table1,ArrayList<Supplies> chair1 ,ArrayList<Supplies> speaker1) {
+        table = table1;
+        speaker = speaker1;
+        chair = chair1;
         initComponents();
     }
 
@@ -81,20 +95,20 @@ public class Rent_Supplies extends javax.swing.JFrame {
 
     private void jButtonTableFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTableFActionPerformed
        dispose();
-      Rent_table table =  new Rent_table();
-      table.show();
+      Rent_table table1 =  new Rent_table(table);
+      table1.show();
     }//GEN-LAST:event_jButtonTableFActionPerformed
 
     private void jButtonSpeakerFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSpeakerFActionPerformed
      dispose();
-    Rent_Speaker speaker =  new Rent_Speaker();
-      speaker.show();
+    Rent_Speaker speaker1 =  new Rent_Speaker(speaker);
+      speaker1.show();
     }//GEN-LAST:event_jButtonSpeakerFActionPerformed
 
     private void jButtonChairFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonChairFActionPerformed
        dispose();
-      Rent_Chair chair =  new Rent_Chair();
-      chair.show();
+      Rent_Chair chair1 =  new Rent_Chair(chair);
+      chair1.show();
     }//GEN-LAST:event_jButtonChairFActionPerformed
 
     /**
@@ -124,13 +138,7 @@ public class Rent_Supplies extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Rent_Supplies().setVisible(true);
-               
-            }
-        });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -65,14 +65,24 @@ public class bookingThread extends Thread {
              out.println("Select from the menu: ");
 
              int ch;
-             while (in.hasNext()) {
+             while (in.hasNext()) {//مو لازم 
                  ch = in.nextInt();
-                 if (ch == 1) {
-                     rentProudct(in, out);
+                 switch (ch) {
+                     case 1:
+                         rentProudct(in, out);
+                         break;
+                     case 2:
+                         updateSupplies(in, out);
+                         break;
+                     case 3:
+                         serviceRating(in, out);
+                         break;
+                     case 4:
+                         System.exit(0);
+                     default:
+                         break;
                  }
-                 else if (ch == 2) {
-                     updateSupplies(in, out);
-                 }
+                 
              }
 
         } 
@@ -81,9 +91,10 @@ public class bookingThread extends Thread {
         }
      }
     public static void rentProudct(Scanner in,PrintWriter out) throws FileNotFoundException, IOException {
+        new Rent_Supplies();
             out.println("--------Rent product--------");
             //Scanner r = new Scanner(System.in);
-            out.println(" 1.Tables  \n 2.Chairs  \n 3.Speakers \n---------------------------- ");
+            out.println(" 1.Tables  \n 2.Chairs  \n 3.Speakers \n 4.Exit \n---------------------------- ");
             out.println("Select from the menu: ");
             int ch = in.nextInt();
             
@@ -97,7 +108,7 @@ public class bookingThread extends Thread {
                     out.println("----------------------------");
                  
                     while(true){
-                    out.println("choose product Id: ");
+                    out.println("Choose product Id: ");
                     int chTable = in.nextInt();
                         if(chTable == 1 || chTable == 2 ){
                             out.println("How many do you want? ");
@@ -116,8 +127,9 @@ public class bookingThread extends Thread {
                              break;
                                
                            }else{
-                            out.println("Invalid ID choose again ");  
-                        } 
+                            out.println("Invalid ID choose again ");
+                            break;
+                         } 
                     }
                     break;
                 }
@@ -128,7 +140,7 @@ public class bookingThread extends Thread {
                     }
                     out.println("----------------------------");
                        while(true){
-                        out.println("choose product Id: ");
+                        out.println("Choose product Id: ");
                         int chChair = in.nextInt();
                            if(chChair == 1 || chChair ==2 || chChair==3 ){     
                            
@@ -158,7 +170,7 @@ public class bookingThread extends Thread {
                     out.println("----------------------------");
                     
                     while(true){
-                        out.println("choose product Id: ");
+                        out.println("Choose product Id: ");
                         int chSpeaker = in.nextInt();  
                         if(chSpeaker== 1 || chSpeaker == 2 ){
                             out.println("How many do you want? ");
@@ -178,6 +190,9 @@ public class bookingThread extends Thread {
                 }
                 break;
             }
+                case 4: {
+                    serviceRating(in, out);
+                }
         }
         
    } 
@@ -185,29 +200,35 @@ public class bookingThread extends Thread {
         while (true) {
             out.println("--------Update Supplies--------");
             
-            out.println("choose collection that you want to update or exit:\n 1.Tables  \n2.Chairs  \n3.Speakers  \n4.Exit \nSelect from the menu: ");
+            out.println("pick collection that you want to update or exit:\n 1.Tables  \n2.Chairs  \n3.Speakers  \n4.Exit \nSelect from the menu: ");
             int collection = in.nextInt();
-            out.println("Choose what do you want to update: \n Change info. \n "
+            
+            int choose = -1;
+            if(collection != 4){
+            out.println("what do you want to update: \n Change info. \n "
                     + " 1. Rename an item \n  2. Change price \n  3. Change quantity"
                     + "\n------------------------------------------------\n"
-                    + "  5. Add new item \n  6. Delete item"
+                    + "  4. Add new item \n  5. Delete item"
                     + "\n------------------------------------------------" + "\nSelect from the menu: ");
-            int choose = in.nextInt();
+            choose = in.nextInt();
+            }
+            
             int item = 0;
             switch (collection) {
                 case 1: {
-                    if (choose == 1 || choose == 2) {
+                    if (choose != 4) {
                         for (int i = 0; i < table.size(); i++) {
                             out.println(i + 1 + "." + table.get(i).toString());
                         }
-                        out.println("choose product Id: ");
+                        out.println("Choose product Id: ");
                         item = in.nextInt();
                         item = item - 1;
                     }
                     switch (choose) {
                         case 1: {
+                            in.nextLine();
                             out.println("Enter new name:");
-                            String name = in.next();
+                            String name = in.nextLine();
                             table.get(item).setName(name);
                             out.println("changed");
                             break;
@@ -223,8 +244,9 @@ public class bookingThread extends Thread {
                             table.get(item).setQuantity(newQuantity);
                             break;
                         case 4: {
+                            in.nextLine();
                             out.println("Enter a name for new item:");
-                            String name = in.next();
+                            String name = in.nextLine();
                             out.println("Enter a price for new item:");
                             int Price = in.nextInt();
                             out.println("Enter the  quantity of the new item:");
@@ -234,16 +256,16 @@ public class bookingThread extends Thread {
                         }
                         case 5:
                             table.remove(item);
-                            System.out.println("Item deleted successfully. ");
+                            out.println("Item deleted successfully. ");
                             break;
                         default:
-                            System.out.println("The number you entered not in the range.");
+                            out.println("The number you entered not in the range.");
                             break;
                     }
                     break;
                 }
                 case 2: {
-                    if (choose == 1 || choose == 2) {
+                    if (choose != 4) {
                         for (int i = 0; i < chair.size(); i++) {
                             out.println(i + 1 + "." + chair.get(i).toString());
                         }
@@ -253,8 +275,9 @@ public class bookingThread extends Thread {
                     }
                     switch (choose) {
                         case 1: {
+                            in.nextLine();
                             out.println("Enter new name:");
-                            String name = in.next();
+                            String name = in.nextLine();
                             chair.get(item).setName(name);
                             break;
                         }
@@ -267,12 +290,13 @@ public class bookingThread extends Thread {
                         case 3:{
                             out.println("Enter new quantity:");
                             int newQuantity = in.nextInt();
-                            table.get(item).setQuantity(newQuantity);
+                            chair.get(item).setQuantity(newQuantity);
                             break;
                         }
                         case 4: {
+                            in.nextLine();
                             out.println("Enter a name for new item:");
-                            String name = in.next();
+                            String name = in.nextLine();
                             out.println("Enter a price for new item:");
                             int Price = in.nextInt();
                             out.println("Enter the quantity of the new item: ");
@@ -291,9 +315,9 @@ public class bookingThread extends Thread {
                     break;
                 }
                 case 3: {
-                    if (choose == 1 || choose == 2) {
+                    if (choose != 4) {
                         for (int i = 0; i < speaker.size(); i++) {
-                            out.println(i + 1 + "." + table.get(i).toString());
+                            out.println(i + 1 + "." + speaker.get(i).toString());
                         }
                         out.println("Enter item number:");
                         item = in.nextInt();
@@ -301,8 +325,9 @@ public class bookingThread extends Thread {
                     }
                     switch (choose) {
                         case 1: {
+                            in.nextLine();
                             out.println("Enter new name:");
-                            String name = in.next();
+                            String name = in.nextLine();
                             speaker.get(item).setName(name);
                             break;
                         }
@@ -315,7 +340,7 @@ public class bookingThread extends Thread {
                         case 3: {
                             out.println("Enter new quantity:");
                             int newQuantity = in.nextInt();
-                            table.get(item).setQuantity(newQuantity);
+                            speaker.get(item).setQuantity(newQuantity);
                             break;
                         }
                         case 4: {
@@ -343,5 +368,22 @@ public class bookingThread extends Thread {
                 }
             }
         }
+    }
+    
+    public static void serviceRating(Scanner in,PrintWriter out) {
+        out.println("Thank you for visiting our store.\nPlease rate your experience on a scale from 1(unhappy) to 10(happy): ");
+
+        int rating = in.nextInt();
+
+        if (rating == 10) {
+            out.println("thank you for rating.");
+        } else if (rating < 10 || rating > 0) {
+            in.nextLine();
+            out.println("How can we make your experience even better?");
+            String improve = in.nextLine();
+            out.println("thank you for rating.");
+        }
+
+        System.exit(0);
     }
 }

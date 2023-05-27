@@ -5,6 +5,10 @@
  */
 package cpit305_project;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,12 +21,20 @@ import javax.swing.JTextField;
  */
 public class NewJFrame extends javax.swing.JFrame {
 
+    static ArrayList<Supplies> table = new ArrayList<>();
+    static ArrayList<Supplies> speaker = new ArrayList<>();
+    static ArrayList<Supplies> chair = new ArrayList<>();
     /**
      * Creates new form NewJFrame
      */
-    public NewJFrame() {
+    public NewJFrame(ArrayList<Supplies> table1,ArrayList<Supplies> chair1 ,ArrayList<Supplies> speaker1) {
+        this.setVisible(true);
         initComponents();
+        table = table1;
+        speaker = speaker1;
+        chair = chair1;
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -119,14 +131,15 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //customer
         dispose();
-        customerFrame Cframe = new customerFrame(new Customer());
+        customerFrame Cframe;
+        Cframe = new customerFrame(table,chair,speaker);
         Cframe.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws IOException {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -150,13 +163,14 @@ public class NewJFrame extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrame().setVisible(true);
+               // new NewJFrame().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -5,11 +5,17 @@
  */
 package cpit305_project;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -24,15 +30,16 @@ public class customerFrame extends javax.swing.JFrame {
      * Creates new form customer_register
      */
     Customer c;
+    
+    static ArrayList<Supplies> table = new ArrayList<>();
+    static ArrayList<Supplies> speaker = new ArrayList<>();
+    static ArrayList<Supplies> chair = new ArrayList<>();
 
-    public customerFrame() {
+    public customerFrame(ArrayList<Supplies> table1,ArrayList<Supplies> chair1 ,ArrayList<Supplies> speaker1) {
         initComponents();
-    }
-
-    public customerFrame(Customer c) {
-        this.c = c;
-        initComponents();
-
+        table = table1;
+        speaker = speaker1;
+        chair = chair1;
     }
 
     /**
@@ -132,11 +139,14 @@ public class customerFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //login
-        String userName = jTextField1.getText();
+        dispose();
+                    MainFCosutmer f = new MainFCosutmer(table,chair,speaker);
+                    f.show();
+        /*String userName = jTextField1.getText();
         String password = jTextField2.getText();
         String url = "jdbc:mysql://localhost:3306/login";
         String username = "root";
-        String pass = "053183";
+        String pass = "1234";
 
         Connection conn = null;
         try {
@@ -171,7 +181,7 @@ public class customerFrame extends javax.swing.JFrame {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-        }
+        }*/
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -212,12 +222,10 @@ public class customerFrame extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new customerFrame().setVisible(true);
-
+                //new customerFrame().setVisible(true);
             }
         });
     }

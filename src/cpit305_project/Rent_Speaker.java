@@ -3,6 +3,7 @@ package cpit305_project;
 
 import cpit305_project.Rent_Supplies;
 import java.awt.Image;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -18,18 +19,27 @@ import javax.swing.JOptionPane;
  */
 public class Rent_Speaker extends javax.swing.JFrame {
 
+    static ArrayList<Supplies> speaker = new ArrayList<>();
     /**
      * Creates new form Rent_Speaker
      */
-    public boolean setqnty(int qnty){
+    public boolean setqnty(int qnty, int originQuant){
          if(qnty ==0){
              JOptionPane.showMessageDialog(null, "Please choose increase the sppiner");
              return false;
+         }if(qnty > originQuant){
+            JOptionPane.showMessageDialog(null, "there is no enough product");
+            return false;
          }
          return true;
     }
-
     public Rent_Speaker() {
+        initComponents();
+        setImage();
+    }
+
+    public Rent_Speaker(ArrayList<Supplies> speaker1) {
+        this.speaker = speaker1;
         initComponents();
         setImage();
     }
@@ -312,8 +322,11 @@ public class Rent_Speaker extends javax.swing.JFrame {
       
        int qnty = Integer.parseInt(jSpinner1.getValue().toString());
        int NumOfd = Integer.parseInt(jSpinner3.getValue().toString());
-       if (setqnty(qnty) && setqnty(NumOfd)){
-           OrderConfirm conf = new OrderConfirm();
+       int originQuant = speaker.get(0).getQuantity();
+       if (setqnty(qnty,originQuant) && setqnty(NumOfd,originQuant)){
+           speaker.get(0).setQuantity(qnty);
+           double Totalp =qnty*speaker.get(0).getPrice()*NumOfd ;
+           OrderConfirm conf = new OrderConfirm(qnty, Totalp);
            conf.show();
            dispose();
        }
@@ -323,8 +336,11 @@ public class Rent_Speaker extends javax.swing.JFrame {
      
         int qnty = Integer.parseInt(jSpinner4.getValue().toString());
        int NumOfd = Integer.parseInt(jSpinner2.getValue().toString());
-       if (setqnty(qnty) && setqnty(NumOfd)){
-           OrderConfirm conf = new OrderConfirm();
+       int originQuant = speaker.get(1).getQuantity();
+       if (setqnty(qnty,originQuant) && setqnty(NumOfd,originQuant)){
+           speaker.get(1).setQuantity(qnty);
+           double Totalp =qnty*speaker.get(1).getPrice()*NumOfd ;
+           OrderConfirm conf = new OrderConfirm(qnty, Totalp);
            conf.show();
            dispose();
        }

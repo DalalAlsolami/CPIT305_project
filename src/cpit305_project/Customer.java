@@ -56,17 +56,11 @@ class Customer {
             while (in.hasNext()) {
                 str = in.nextLine();
                 System.out.println(str);
-                if (str.equals("Select from the menu: ")) {
-                    ch = userInput.nextInt();
-                    out.println(ch);
-                } else if (str.equals("choose product Id: ")) {
-                    ch = userInput.nextInt();
-                    out.println(ch);
-                } else if (str.equals("How many do you want? ") || str.equals("How many days do you need it? ")) {
-                    ch = userInput.nextInt();
-                    out.println(ch);
-                }else if (str.contains("Enter")) {
-                    user = userInput.next();
+                if (str.contains("Select") || str.contains("Choose")) {
+                    user = userInput.nextLine();
+                    out.println(user);
+                } else if (str.contains("Enter") || str.contains("How") || str.contains("rate")) {
+                    user = userInput.nextLine();
                     out.println(user);
                 }
             }
