@@ -27,7 +27,7 @@ public class Rent_Speaker extends javax.swing.JFrame {
          if(qnty ==0){
              JOptionPane.showMessageDialog(null, "Please choose increase the sppiner");
              return false;
-         }if(qnty > originQuant){
+         }else if(qnty > originQuant){
             JOptionPane.showMessageDialog(null, "there is no enough product");
             return false;
          }
