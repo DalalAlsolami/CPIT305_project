@@ -38,14 +38,15 @@ public class UpdateTable extends javax.swing.JFrame {
     public void set(int id,ArrayList<Supplies> table){
         if(id == 1){
             NameText.setText(table.get(id-1).getName());
+            PriceText.setText(Integer.toString(table.get(id-1).getPrice()));
+            QText.setText(Integer.toString(table.get(id-1).getQuantity()));
+            
             String newN = newName.getText();
             table.get(id-1).setName(newN);
             
-            PriceText.setText(Integer.toString(table.get(id-1).getPrice()));
             int newP = Integer.parseInt(newPrice.getText());
             table.get(id-1).setPrice(newP);
             
-            QText.setText(Integer.toString(table.get(id-1).getQuantity()));
             int newQ = Integer.parseInt(newQuantity.getText());
             table.get(id-1).setQuantity(newQ);
         }
