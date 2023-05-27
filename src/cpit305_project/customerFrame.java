@@ -132,7 +132,7 @@ public class customerFrame extends javax.swing.JFrame {
         String password = jTextField2.getText();
         String url = "jdbc:mysql://localhost:3306/login";
         String username = "root";
-        String pass = "053183";
+        String pass = "1234";
 
         Connection conn = null;
         try {

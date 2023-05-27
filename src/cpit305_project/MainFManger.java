@@ -109,7 +109,7 @@ public class MainFManger extends javax.swing.JFrame {
 
     private void UpdateTButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateTButtonActionPerformed
         dispose();
-        UpdateT nt = new UpdateT();
+        UpdateT nt = new UpdateT(table);
         nt.show();
     }//GEN-LAST:event_UpdateTButtonActionPerformed
 
