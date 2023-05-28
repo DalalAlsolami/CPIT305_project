@@ -10,12 +10,12 @@ public class Lo {
 
         String url = "jdbc:mysql://localhost:3306";
         String username = "root";
-        String pass = "053183";
+        String pass = "1234";
 
         Connection conn = DriverManager.getConnection(url, username, pass);
 
         java.sql.Statement st = conn.createStatement();
-        //st.executeUpdate("CREATE DATABASE login");
+        st.executeUpdate("CREATE DATABASE login");
         if (conn != null) {
             System.out.println("Connected to DB");
         }

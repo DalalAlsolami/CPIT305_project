@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package cpit305_project;
 
 import java.sql.Connection;
@@ -15,9 +11,6 @@ import javax.swing.JOptionPane;
 
 public class customerFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form customer_register
-     */
     Customer c;
 
     static ArrayList<Supplies> table = new ArrayList<>();
@@ -132,27 +125,27 @@ public class customerFrame extends javax.swing.JFrame {
         String password = jTextField2.getText();
         String url = "jdbc:mysql://localhost:3306/login";
         String username = "root";
-        String pass = "053183";
+        String pass = "1234";
 
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url, username, pass);
             java.sql.Statement st = conn.createStatement();
-//            String sql = "CREATE TABLE customers\n" +
-//        "( id int NOT NULL,\n" +
-//        "  name varchar(250) NOT NULL,\n" +
-//        "  password varchar(250)\n" +
-//        ");";
-//       st.executeUpdate(sql);
-//       st.executeUpdate("INSERT INTO customers VALUES  (1, 'Sara','1234' )");
-//       st.executeUpdate("INSERT INTO  customers VALUES (2, 'Shomokh','1234')");
-//       st.executeUpdate("INSERT INTO  customers VALUES (3, 'Dalal','1234')");
+            String sql = "CREATE TABLE customers\n" +
+        "( id int NOT NULL,\n" +
+        "  name varchar(250) NOT NULL,\n" +
+        "  password varchar(250)\n" +
+        ");";
+       st.executeUpdate(sql);
+       st.executeUpdate("INSERT INTO customers VALUES  (1, 'Sara','1234' )");
+       st.executeUpdate("INSERT INTO  customers VALUES (2, 'Shomokh','1234')");
+       st.executeUpdate("INSERT INTO  customers VALUES (3, 'Dalal','1234')");
             try {
 
-                PreparedStatement sts = (PreparedStatement) conn.prepareStatement("SELECT Name, password FROM customers where Name=? and password=?");
-                sts.setString(1, userName);
-                sts.setString(2, password);
-                ResultSet rs = sts.executeQuery();
+             PreparedStatement sts = (PreparedStatement) conn.prepareStatement("SELECT name, password FROM customers where name=? and password=?");
+             sts.setString(1, userName);
+             sts.setString(2, password);
+             ResultSet rs = sts.executeQuery();
                 if (rs.next()) {
                     dispose();
                     MainFCosutmer f = new MainFCosutmer(table, chair, speaker);
@@ -176,36 +169,7 @@ public class customerFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(customerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(customerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(customerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(customerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        /* Create and display the form */
+      
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new customerFrame().setVisible(true);

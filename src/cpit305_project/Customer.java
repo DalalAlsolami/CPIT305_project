@@ -17,11 +17,9 @@ class Customer {
       this.password = str2;
      
     }
-
     Customer() {
        
     }
-
     public String getUsername() {
         return username;
     }
@@ -29,9 +27,7 @@ class Customer {
     public void setUsername(String username) {
         this.username = username;
     }
-
-  
-
+    
     public String getPassword() {
         return password;
     }
@@ -41,11 +37,7 @@ class Customer {
     }
     public static void main(String[] args) throws UnknownHostException, IOException  {
         Socket c = new Socket("127.0.0.1",8800);
-        
         c.close();
     }
     
-
-
-
 }
