@@ -125,7 +125,7 @@ public class customerFrame extends javax.swing.JFrame {
         String password = jTextField2.getText();
         String url = "jdbc:mysql://localhost:3306/login";
         String username = "root";
-        String pass = "1234";
+        String pass = "053183";
 
         Connection conn = null;
         try {
@@ -136,10 +136,10 @@ public class customerFrame extends javax.swing.JFrame {
         "  name varchar(250) NOT NULL,\n" +
         "  password varchar(250)\n" +
         ");";
-       st.executeUpdate(sql);
-       st.executeUpdate("INSERT INTO customers VALUES  (1, 'Sara','1234' )");
-       st.executeUpdate("INSERT INTO  customers VALUES (2, 'Shomokh','1234')");
-       st.executeUpdate("INSERT INTO  customers VALUES (3, 'Dalal','1234')");
+//       st.executeUpdate(sql);
+//       st.executeUpdate("INSERT INTO customers VALUES  (1, 'Sara','1234' )");
+//       st.executeUpdate("INSERT INTO  customers VALUES (2, 'Shomokh','1234')");
+//       st.executeUpdate("INSERT INTO  customers VALUES (3, 'Dalal','1234')");
             try {
 
              PreparedStatement sts = (PreparedStatement) conn.prepareStatement("SELECT name, password FROM customers where name=? and password=?");
